@@ -18,6 +18,22 @@ class ScrButton(Button):
         self.screen.manager.current = self.goal
 
 
+class FirstScr(Screen):
+    def __int__(self, **kwargs):
+        super(). __int__(**kwargs)
+        vl = BoxLayout(operations = 'vertical', size_hint=(.5,.5), 
+                       pos_hint={'center_x': 0.5, 'center_y': 0.5})
+
+        btn = Button(text = 'вибір: 1', size_hint=(.5,1))
+        btn_back = ScrButton(self, direction = 'up', goal = 'main',
+                             text = 'Назад', seize_hint=(.5,1), pos_hint={'right': 1})
+        vl.add_widget(btn)
+        vl.add_widget(btn_back)
+        self.add_widget(vl)
+                        
+
+
+
 class MainScr(Screen):
     def __init__(self,**kwargs):
         super().__init__(**kwargs)
@@ -49,6 +65,12 @@ class MyApp(App):
     def build(self):
         sm = ScreenManager()
         sm.add_widget(MainScr(name='main'))
+        sm.add_widget(FirstScr(name = 'first'))
+        #sm.add_widget(SecondScr(name ='second'))
+        #sm.add_widget(ThirdScr(name='third'))
+        #sm.add_widget(FourthScr(name = 'fourth'))
+
+
 
 
 
