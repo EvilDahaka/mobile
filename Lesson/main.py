@@ -19,8 +19,8 @@ class ScrButton(Button):
 
 
 class FirstScr(Screen):
-    def __int__(self, **kwargs):
-        super(). __int__(**kwargs)
+    def __init__(self, **kwargs):
+        super(). __init__(**kwargs)
         vl = BoxLayout(operations = 'vertical', size_hint=(.5,.5), 
                        pos_hint={'center_x': 0.5, 'center_y': 0.5})
 
@@ -30,8 +30,32 @@ class FirstScr(Screen):
         vl.add_widget(btn)
         vl.add_widget(btn_back)
         self.add_widget(vl)
-                        
 
+class SecondScr(Screen):
+    def __init__(self, **kwargs):
+        super(). __init__(**kwargs)
+        vl = BoxLayout(orientation = 'vertical')
+        self.txt = Label(text = ' dsafafsaf')
+        vl.add_widget(self.txt)
+
+
+        hl_0 = BoxLayout(size_hint =(0.8, None), height = '30sp')
+        lbl1 = Label(text = 'Введіть пароль:',halign = 'right')
+        self.input = TextInput(multiline =False)
+
+
+        hl_0.add_widget(lbl1)
+        hl_0.add_widget(self.input)
+        vl.add_widget(hl_0)
+
+        hl = BoxLayout(size_hint=(0.5, 0.2), pos_hint={'center_x': 0.5})
+        btn_false =Button(text = 'Ок!')
+        btn_back = ScrButton(self, direction = 'right', goal = 'main', text = 'Назад')
+
+        hl.add_widget(btn_false)
+        hl.add_widget(btn_back)
+        vl.add_widget(hl)
+        self.add_widget(vl)
 
 
 class MainScr(Screen):
@@ -51,7 +75,7 @@ class MainScr(Screen):
 
         vl.add_widget(ScrButton(self,direction = 'down', goal = 'first',text = '1'))
         vl.add_widget(ScrButton(self,direction = 'left', goal = 'second',text = '2'))
-        vl.add_widget(ScrButton(self,direction = 'up', goal = 'thired',text = '3'))
+        vl.add_widget(ScrButton(self,direction = 'up', goal = 'third',text = '3'))
         vl.add_widget(ScrButton(self,direction = 'right', goal = 'fourth',text = '4'))
 
 
@@ -66,7 +90,7 @@ class MyApp(App):
         sm = ScreenManager()
         sm.add_widget(MainScr(name='main'))
         sm.add_widget(FirstScr(name = 'first'))
-        #sm.add_widget(SecondScr(name ='second'))
+        sm.add_widget(SecondScr(name ='second'))
         #sm.add_widget(ThirdScr(name='third'))
         #sm.add_widget(FourthScr(name = 'fourth'))
 
