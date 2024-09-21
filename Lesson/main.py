@@ -57,6 +57,11 @@ class SecondScr(Screen):
         vl.add_widget(hl)
         self.add_widget(vl)
 
+       btn_false.on_press = self.change_txt
+
+    def change_txt(self):
+        self.txt.text = self.input.text + '!!!!!!!!!!!'
+
 
 class MainScr(Screen):
     def __init__(self,**kwargs):
